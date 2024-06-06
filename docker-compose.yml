@@ -1,0 +1,6 @@
+﻿services:
+  didarmessagingtask:
+    image: didarmessagingtask
+    build:
+      context: .
+      dockerfile: DidarMessagingTask/Dockerfile

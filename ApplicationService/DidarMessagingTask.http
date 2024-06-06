@@ -1,0 +1,6 @@
+@DidarMessagingTask_HostAddress = http://localhost:5014
+
+GET {{DidarMessagingTask_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
