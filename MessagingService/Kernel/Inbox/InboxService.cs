@@ -1,8 +1,9 @@
 ﻿using MessagingService.Common.Data;
+using ServiceContracts;
 
 namespace MessagingService.Kernel.Inbox;
 
-public class InboxService(ApplicationDbContext dbContext, TimeProvider timeProvider)
+public class InboxService(ApplicationDbContext dbContext, ICustomTimeProvider timeProvider)
 {
     public async Task<bool> SentNotification(SendMessageCommand command, CancellationToken cToken)
     {
@@ -12,7 +13,7 @@ public class InboxService(ApplicationDbContext dbContext, TimeProvider timeProvi
             Content = command.Content,
             MessageId = command.MessageId,
             MessageType = MessageType.Full,
-            CreatedOn = timeProvider.GetUtcNow().DateTime,
+            CreatedOn = timeProvider.UtcNow(),
         }, cToken);
 
         var r = await dbContext.SaveChangesAsync(cToken);

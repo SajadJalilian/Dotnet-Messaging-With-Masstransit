@@ -11,10 +11,9 @@ public class SendMessageRequestConsumer(InboxService inboxService, ILogger<SendM
         var message = context.Message;
         var messageId = context.MessageId ?? new Guid();
 
-        var result = await
-            inboxService.SentNotification(new SendMessageCommand(message.Content,
-                    message.UserId, messageId),
-                context.CancellationToken);
+        await inboxService.SentNotification(new SendMessageCommand(message.Content,
+                message.UserId, messageId),
+            context.CancellationToken);
 
         logger.LogError($"id:{messageId}--content:{message.Content}");
     }
