@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MessagingService.Kernel.Inbox;
+using Microsoft.EntityFrameworkCore;
 
 namespace MessagingService.Common.Data;
 
-class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext
 {
-    internal ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions) : base(dbContextOptions)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions) : base(dbContextOptions)
     {
     }
 
-    // DbSet<Holiday> Holidays { get; set; }
+    public DbSet<InboxMessage> InboxMessages { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

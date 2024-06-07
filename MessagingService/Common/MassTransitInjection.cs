@@ -1,5 +1,5 @@
 using MassTransit;
-using MessagingService.Features.Inbox;
+using MessagingService.Kernel.Inbox;
 using ServiceContracts;
 
 namespace MessagingService.Common;
@@ -19,7 +19,7 @@ internal static class MassTransitInjection
                 // x.AddRequestClient<Request>();
 
                 // Consumers
-                x.AddConsumer<SendNotificationRequestConsumer>();
+                x.AddConsumer<SendMessageRequestConsumer>();
 
                 x.UsingRabbitMq((context, config) =>
                 {

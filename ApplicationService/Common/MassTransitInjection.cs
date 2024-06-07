@@ -15,7 +15,7 @@ internal static class MassTransitInjection
                 x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("app"));
 
                 // Clients
-                x.AddRequestClient<SendNotificationBusRequest>();
+                x.AddRequestClient<SendMessageBusRequest>();
 
                 // Consumers
                 // x.AddConsumer<Consumer>();

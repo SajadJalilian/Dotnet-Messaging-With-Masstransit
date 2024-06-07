@@ -1,3 +1,7 @@
 ﻿namespace ServiceContracts;
 
-public record SendEmailBusRequest(string Message, int UserId): BusRequest;
+public record SendEmailBusRequest() : BusRequest
+{
+    public int UserId { get; init; }
+    public required string Message { get; init; }
+}
