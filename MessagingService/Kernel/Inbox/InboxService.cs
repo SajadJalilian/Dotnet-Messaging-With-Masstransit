@@ -2,9 +2,9 @@
 
 namespace MessagingService.Kernel.Inbox;
 
-class InboxService(ApplicationDbContext dbContext, TimeProvider timeProvider)
+public class InboxService(ApplicationDbContext dbContext, TimeProvider timeProvider)
 {
-    internal async Task<bool> SentNotification(SendMessageCommand command, CancellationToken cToken)
+    public async Task<bool> SentNotification(SendMessageCommand command, CancellationToken cToken)
     {
         var messages = dbContext.Set<InboxMessage>();
         await messages.AddAsync(new InboxMessage

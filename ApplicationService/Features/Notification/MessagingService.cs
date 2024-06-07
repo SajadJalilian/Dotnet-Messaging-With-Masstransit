@@ -3,19 +3,12 @@ using ServiceContracts;
 
 namespace ApplicationService.Features.Notification;
 
-class MessagingService
+class MessagingService(IBus bus)
 {
-    private readonly ISendEndpointProvider _sendEndpointProvider;
-
-    public MessagingService(ISendEndpointProvider sendEndpointProvider)
-    {
-        _sendEndpointProvider = sendEndpointProvider;
-    }
-
     internal async Task<bool> SendNotification(SendNotificationCommand request, CancellationToken cToken)
     {
-        var endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri(NotificationConstants.ServiceAddressUri));
-        await endpoint.Send(new SendMessageBusRequest
+        var sendEndpoint = await bus.GetSendEndpoint(new Uri(MessagingEndpoints.ServiceUri));
+        await sendEndpoint.Send(new SendMessageBusRequest
         {
             Content = request.Content,
             UserId = request.UserId,

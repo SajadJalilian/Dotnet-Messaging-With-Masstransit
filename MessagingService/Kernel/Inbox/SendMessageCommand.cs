@@ -1,3 +1,3 @@
 ﻿namespace MessagingService.Kernel.Inbox;
 
-record SendMessageCommand(string Content, int UserId, Guid MessageId);
+public record SendMessageCommand(string Content, int UserId, Guid MessageId);
