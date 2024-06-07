@@ -1,10 +1,10 @@
 ﻿using MessagingService.Common.Data;
 
-namespace MessagingService.Features.Notification;
+namespace MessagingService.Features.Inbox;
 
-class NotificationService(ApplicationDbContext dbContext)
+class InboxService(ApplicationDbContext dbContext)
 {
-    internal async Task<bool> SentNotification(SendNotificationCommand command, CancellationToken token)
+    internal async Task<bool> SentNotification(SendMessageCommand command, CancellationToken token)
     {
         // var holidays = await dbContext.Holidays.ToArrayAsync(token);
         // var holidayDates = holidays.Select(x => x.Date);

@@ -1,22 +1,22 @@
 using MassTransit;
 using ServiceContracts;
 
-namespace MessagingService.Features.Notification;
+namespace MessagingService.Features.Inbox;
 
 class SendNotificationRequestConsumer : IConsumer<SendNotificationBusRequest>
 {
-    private readonly NotificationService _notificationService;
+    private readonly InboxService _inboxService;
 
-    SendNotificationRequestConsumer(NotificationService notificationService)
+    SendNotificationRequestConsumer(InboxService inboxService)
     {
-        _notificationService = notificationService;
+        _inboxService = inboxService;
     }
 
     public async Task Consume(ConsumeContext<SendNotificationBusRequest> context)
     {
         var message = context.Message;
         var result = await
-            _notificationService.SentNotification(new SendNotificationCommand(message.Message, message.Userid),
+            _inboxService.SentNotification(new SendMessageCommand(message.Message, message.UserId),
                 context.CancellationToken);
         
         if (result) await context.RespondAsync("ok");

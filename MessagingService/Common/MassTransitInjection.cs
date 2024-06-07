@@ -1,5 +1,5 @@
 using MassTransit;
-using MessagingService.Features.Notification;
+using MessagingService.Features.Inbox;
 using ServiceContracts;
 
 namespace MessagingService.Common;

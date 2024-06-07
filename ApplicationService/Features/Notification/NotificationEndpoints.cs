@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationService.Features.Notification;
 
-static class CongestionTaxEndpoints
+static class NotificationEndpoints
 {
     internal static IEndpointRouteBuilder NotificationEndpoint(this IEndpointRouteBuilder endpoint)
     {
@@ -12,7 +12,7 @@ static class CongestionTaxEndpoints
                 CancellationToken cancellationToken) =>
             {
                 var tax = await service.SendNotification(
-                    new SendNotificationCommand(request.Message, request.UserId, request.NotificationTypes),
+                    new SendNotificationCommand(request.Message, request.UserId),
                     cancellationToken);
                 return Results.Ok(tax);
             }).Validator<SendNotificationRequest>();

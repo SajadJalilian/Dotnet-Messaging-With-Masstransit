@@ -1,6 +1,6 @@
 ﻿namespace ServiceContracts;
 
-public enum NotificationBusType
+public enum MessageBusType
 {
     Full = 1,
     Email,
