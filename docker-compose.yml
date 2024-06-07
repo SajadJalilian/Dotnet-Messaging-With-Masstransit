@@ -1,6 +1,87 @@
-﻿services:
+﻿version: "3"
+services:
+  
+  redis:
+    image: redis
+    container_name: redis
+    hostname: redis
+    restart: unless-stopped
+    
+    networks:
+      - messaging
+  
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: unless-stopped
+    
+    networks:
+      - messaging
+  
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: postgres
+    restart: unless-stopped
+    
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass123
+      POSTGRES_DB: Messaging
+    
+    networks:
+      - messaging
+  
+  
   applicationservice:
     image: applicationservice
+    container_name: applicationservice
+    hostname: applicationservice
+    restart: unless-stopped
     build:
       context: .
-      dockerfile: ApplicationService/Dockerfile
+      args:
+        - ENV=$ENV
+      dockerfile: src/ApplicationService/Dockerfile
+    ports:
+      - 3305:3305
+    environment:
+      ASPNETCORE_ENVIRONMENT: $ENV
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:3305/health && echo 'OK'" ]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    networks:
+      - messaging
+  
+  
+  messagingservice:
+    image: messagingservice
+    container_name: messagingservice
+    hostname: messagingservice
+    restart: unless-stopped
+    build:
+      context: .
+      args:
+        - ENV=$ENV
+      dockerfile: src/MessagingService/Dockerfile
+    ports:
+      - 3300:3300
+    environment:
+      ASPNETCORE_ENVIRONMENT: $ENV
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:3300/health && echo 'OK'" ]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    
+    networks:
+      - messaging
+
+networks:
+  messaging:
+    external: true
+
+
