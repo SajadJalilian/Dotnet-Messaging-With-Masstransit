@@ -7,10 +7,12 @@ class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbCon
 {
     public ApplicationDbContext CreateDbContext(string[] args)
     {
-        IConfigurationRoot configuration = new ConfigurationBuilder()
+        var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
-            .Build();
+            .AddJsonFile($"appsettings.{environmentName}.json", true)
+            .AddEnvironmentVariables().Build();
+        
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
         optionsBuilder.UseNpgsql(configuration.GetConnectionString(MessagingConstants.DefaultConnection));
 

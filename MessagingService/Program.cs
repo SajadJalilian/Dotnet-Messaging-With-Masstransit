@@ -2,7 +2,15 @@ using MessagingService.Common;
 using MessagingService.Features;
 using MessagingService.Kernel;
 
+var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile($"appsettings.{env}.json")
+    .AddEnvironmentVariables()
+    .Build();
+
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseConfiguration(configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
