@@ -1,5 +1,5 @@
-﻿using MessagingService.Kernel.Inbox;
-using ServiceContracts;
+﻿using Core;
+using MessagingService.Kernel.Inbox;
 
 namespace MessagingService.Kernel;
 

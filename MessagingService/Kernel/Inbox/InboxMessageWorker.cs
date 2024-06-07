@@ -1,8 +1,9 @@
-﻿using MessagingService.Common;
+﻿using Core;
+using Core.LockManager;
+using MessagingService.Common;
 using MessagingService.Common.Data;
 using MessagingService.Features.Email;
 using MessagingService.Features.Sms;
-using ServiceContracts;
 
 namespace MessagingService.Kernel.Inbox;
 
@@ -17,12 +18,19 @@ public class InboxMessageWorker(IServiceProvider serviceProvider) : BackgroundSe
         var smsProvider = scope.ServiceProvider.GetRequiredService<ISmsProvider>();
         var emailProvider = scope.ServiceProvider.GetRequiredService<IEmailProvider>();
         var timeProvider = scope.ServiceProvider.GetRequiredService<ICustomTimeProvider>();
-        
+        var lockManager = scope.ServiceProvider.GetRequiredService<ILockManager>();
+
+        bool isLocked;
         while (!stoppingToken.IsCancellationRequested)
         {
             var message = messages.FirstOrDefault(x => x.Processed == false);
-
             if (message is null) continue;
+            
+            isLocked = await lockManager.TryToLockAsync(
+                key: $"inbox-worker-message-lock-{message.MessageId}",
+                duration: new TimeSpan(0, 1, 0)
+            );
+            if (isLocked)continue;
 
             if (!message.SmsSend)
             {

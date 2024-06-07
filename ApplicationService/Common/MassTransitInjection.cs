@@ -1,5 +1,5 @@
+using Core;
 using MassTransit;
-using ServiceContracts;
 
 namespace ApplicationService.Common;
 

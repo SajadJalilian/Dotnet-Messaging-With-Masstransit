@@ -1,5 +1,5 @@
-﻿using MassTransit;
-using ServiceContracts;
+﻿using Core;
+using MassTransit;
 
 namespace ApplicationService.Features.Notification;
 

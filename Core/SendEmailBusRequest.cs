@@ -1,4 +1,4 @@
-﻿namespace ServiceContracts;
+﻿namespace Core;
 
 public record SendEmailBusRequest() : BusRequest
 {

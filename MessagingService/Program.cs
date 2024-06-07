@@ -15,6 +15,7 @@ builder.WebHost.UseConfiguration(configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddConfiguredMassTransit(builder.Configuration);
+builder.Services.AddConfiguredRedis(builder.Configuration);
 builder.Services.ConfigureDbContexts(builder.Configuration);
 builder.Services.ConfigureFeatures();
 builder.Services.ConfigureKernel();

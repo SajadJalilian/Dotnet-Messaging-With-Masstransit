@@ -1,5 +1,5 @@
+using Core;
 using MassTransit;
-using ServiceContracts;
 
 namespace MessagingService.Kernel.Inbox;
 

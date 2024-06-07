@@ -1,6 +1,6 @@
+using Core;
 using MassTransit;
 using MessagingService.Kernel.Inbox;
-using ServiceContracts;
 
 namespace MessagingService.Common;
 
