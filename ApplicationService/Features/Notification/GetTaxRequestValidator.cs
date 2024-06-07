@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace DidarMessagingTask.Features.Notification;
+namespace ApplicationService.Features.Notification;
 
- class GetTaxRequestValidator : AbstractValidator<SendNotificationRequest>
+class GetTaxRequestValidator : AbstractValidator<SendNotificationRequest>
 {
-     GetTaxRequestValidator()
+    GetTaxRequestValidator()
     {
         RuleFor(x => x.Message)
             .NotEmpty()
@@ -13,5 +13,13 @@ namespace DidarMessagingTask.Features.Notification;
         RuleFor(x => x.UserId)
             .NotNull()
             .WithMessage("User ID is required");
+
+        RuleFor(x => x.NotificationTypes)
+            .Must(x => x.Length > 0)
+            .WithMessage("At least one type is required is required");
+        
+        RuleForEach(x => x.NotificationTypes)
+            .IsInEnum()
+            .WithMessage("Invalid notification type");
     }
 }

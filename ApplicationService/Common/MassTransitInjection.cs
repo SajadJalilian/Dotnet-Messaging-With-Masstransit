@@ -1,7 +1,7 @@
 using MassTransit;
 using ServiceContracts;
 
-namespace DidarMessagingTask.Common;
+namespace ApplicationService.Common;
 
 internal static class MassTransitInjection
 {

@@ -1,5 +1,5 @@
-using DidarMessagingTask.Common;
-using DidarMessagingTask.Features;
+using ApplicationService.Common;
+using ApplicationService.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 

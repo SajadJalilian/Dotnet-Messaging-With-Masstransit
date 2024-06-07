@@ -1,8 +1,8 @@
-﻿namespace DidarMessagingTask.Features.Notification;
+﻿namespace ApplicationService.Features.Notification;
 
 class MessagingService
 {
-    internal async Task<bool> SendNotification(SendNotificationRequest request, CancellationToken token)
+    internal async Task<bool> SendNotification(SendNotificationCommand request, CancellationToken token)
     {
         return true;
     }

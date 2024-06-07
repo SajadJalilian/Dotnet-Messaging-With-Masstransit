@@ -1,6 +1,6 @@
-﻿namespace DidarMessagingTask.Common;
+﻿namespace ApplicationService.Common;
 
- static class ApplictionConstants
+static class ApplictionConstants
 {
-     const string DefaultConnection = "DefaultConnection";
+    const string DefaultConnection = "DefaultConnection";
 }

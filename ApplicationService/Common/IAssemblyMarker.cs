@@ -1,5 +1,5 @@
-﻿namespace DidarMessagingTask.Common;
+﻿namespace ApplicationService.Common;
 
- interface IAssemblyMarker
+interface IAssemblyMarker
 {
 }

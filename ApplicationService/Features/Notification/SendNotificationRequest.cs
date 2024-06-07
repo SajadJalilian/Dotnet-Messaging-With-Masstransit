@@ -1,3 +1,3 @@
-﻿namespace DidarMessagingTask.Features.Notification;
+﻿namespace ApplicationService.Features.Notification;
 
- record SendNotificationRequest(string Message, int UserId);
+record SendNotificationRequest(string Message, int UserId, NotificationType[] NotificationTypes);

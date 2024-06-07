@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using FluentValidation;
 
-namespace DidarMessagingTask.Common.Filters;
+namespace ApplicationService.Common.Filters;
 
 class EndpointValidatorFilter<T> : IEndpointFilter
 {

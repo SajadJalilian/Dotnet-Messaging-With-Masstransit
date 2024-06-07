@@ -1,6 +1,6 @@
-﻿using DidarMessagingTask.Features.Notification;
+﻿using ApplicationService.Features.Notification;
 
-namespace DidarMessagingTask.Features;
+namespace ApplicationService.Features;
 
 internal static class FeatureManager
 {
