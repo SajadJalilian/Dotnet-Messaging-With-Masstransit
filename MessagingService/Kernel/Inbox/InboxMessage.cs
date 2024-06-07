@@ -15,9 +15,10 @@ public class InboxMessage : IEntity
     [MaxLength(MessagingConstants.MessageContentMaxLength)]
     public required string Content { get; set; }
 
+    public bool SmsSend { get; set; }
+    public bool EmailSend { get; set; }
+
     public DateTime CreatedOn { get; set; }
-
     public DateTime? ProcessedOn { get; set; }
-
     public bool Processed { get; set; }
 }

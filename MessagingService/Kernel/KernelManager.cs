@@ -9,6 +9,7 @@ internal static class KernelManager
     {
         services.AddScoped<InboxService>();
         services.AddSingleton<ICustomTimeProvider, CustomTimeProvider>();
+        services.AddHostedService<InboxMessageWorker>();
 
         return services;
     }

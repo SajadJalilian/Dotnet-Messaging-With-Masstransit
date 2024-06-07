@@ -12,7 +12,7 @@ public class InboxService(ApplicationDbContext dbContext, ICustomTimeProvider ti
         {
             Content = command.Content,
             MessageId = command.MessageId,
-            MessageType = MessageType.Full,
+            MessageType = MessageType.Full, // We can handle types later
             CreatedOn = timeProvider.UtcNow(),
         }, cToken);
 
