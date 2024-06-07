@@ -13,7 +13,7 @@ internal static class FeatureManager
         return services;
     }
 
-    static IEndpointRouteBuilder MapCongestionFeatures(this IEndpointRouteBuilder endpoint)
+    internal static IEndpointRouteBuilder MapCongestionFeatures(this IEndpointRouteBuilder endpoint)
     {
         var groupEndpoint = endpoint.MapGroup("/notification")
             .WithTags(EndpointTagName)

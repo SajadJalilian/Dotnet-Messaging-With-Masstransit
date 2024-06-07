@@ -1,13 +1,13 @@
 ﻿using System.Net;
 using FluentValidation;
 
-namespace ApplicationService.Common.Filters;
+namespace ApplicationService.Common;
 
-class EndpointValidatorFilter<T> : IEndpointFilter
+public class EndpointValidatorFilter<T> : IEndpointFilter
 {
     private readonly IValidator<T> _validator;
 
-    EndpointValidatorFilter(IValidator<T> validator)
+    public EndpointValidatorFilter(IValidator<T> validator)
     {
         _validator = validator;
     }
@@ -30,9 +30,9 @@ class EndpointValidatorFilter<T> : IEndpointFilter
     }
 }
 
-static class ValidatorExtensions
+public static class ValidatorExtensions
 {
-    internal static RouteHandlerBuilder Validator<T>(this RouteHandlerBuilder handlerBuilder)
+    public static RouteHandlerBuilder Validator<T>(this RouteHandlerBuilder handlerBuilder)
         where T : class
     {
         handlerBuilder.AddEndpointFilter<EndpointValidatorFilter<T>>();

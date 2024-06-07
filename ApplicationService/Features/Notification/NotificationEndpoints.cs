@@ -1,4 +1,4 @@
-﻿using ApplicationService.Common.Filters;
+﻿using ApplicationService.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApplicationService.Features.Notification;

@@ -1,5 +1,5 @@
 ﻿namespace ApplicationService.Common;
 
-interface IAssemblyMarker
+public interface IAssemblyMarker
 {
 }

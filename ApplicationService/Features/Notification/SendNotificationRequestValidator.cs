@@ -2,9 +2,9 @@
 
 namespace ApplicationService.Features.Notification;
 
-class GetTaxRequestValidator : AbstractValidator<SendNotificationRequest>
+public class SendNotificationRequestValidator : AbstractValidator<SendNotificationRequest>
 {
-    GetTaxRequestValidator()
+    public SendNotificationRequestValidator()
     {
         RuleFor(x => x.Message)
             .NotEmpty()
