@@ -1,6 +1,6 @@
 using MessagingService.Common;
-using MessagingService.Features;
 using MessagingService.Kernel;
+using MessagingService.Providers;
 
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 var configuration = new ConfigurationBuilder()
@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddConfiguredMassTransit(builder.Configuration);
 builder.Services.AddConfiguredRedis(builder.Configuration);
 builder.Services.ConfigureDbContexts(builder.Configuration);
-builder.Services.ConfigureFeatures();
+builder.Services.ConfigureProviders();
 builder.Services.ConfigureKernel();
 
 var app = builder.Build();

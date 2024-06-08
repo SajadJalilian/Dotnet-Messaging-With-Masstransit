@@ -1,4 +1,4 @@
-namespace MessagingService.Features.Email;
+namespace MessagingService.Providers.Email;
 
 public class EmailProvider : IEmailProvider
 {

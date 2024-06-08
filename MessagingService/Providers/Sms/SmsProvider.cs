@@ -1,4 +1,4 @@
-namespace MessagingService.Features.Sms;
+namespace MessagingService.Providers.Sms;
 
 public class SmsProvider : ISmsProvider
 {

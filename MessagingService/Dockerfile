@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["MessagingService/MessagingService.csproj", "MessagingService/"]
 RUN dotnet restore "MessagingService/MessagingService.csproj"
 COPY . .
-WORKDIR "/src/MessagingService"
+WORKDIR "MessagingService"
 RUN dotnet build "MessagingService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

@@ -1,6 +1,6 @@
 ﻿namespace ApplicationService.Common;
 
-static class ApplictionConstants
+static class ApplicationConstants
 {
     const string DefaultConnection = "DefaultConnection";
 }

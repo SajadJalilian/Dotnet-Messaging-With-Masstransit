@@ -2,8 +2,8 @@
 using Core.LockManager;
 using MessagingService.Common;
 using MessagingService.Common.Data;
-using MessagingService.Features.Email;
-using MessagingService.Features.Sms;
+using MessagingService.Providers.Email;
+using MessagingService.Providers.Sms;
 
 namespace MessagingService.Kernel.Inbox;
 

@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["ApplicationService/ApplicationService.csproj", "ApplicationService/"]
 RUN dotnet restore "ApplicationService/ApplicationService.csproj"
 COPY . .
-WORKDIR "/src/ApplicationService"
+WORKDIR "ApplicationService"
 RUN dotnet build "ApplicationService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
